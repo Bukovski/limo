@@ -1,0 +1,394 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+//html, body
+//  height: 100% //заставляет mmenu при открытии делать скрол в начало страницы
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+/****************** header *********************/
+body
+  background-color: #4e4e4e
+
+/************** desktop panel **************/
+body.header-fixed header
+  position: fixed
+  top: 0
+  right: 0
+  padding-top: 0
+  width: 100%
+  z-index: 2
+  transition: all .7s ease /*****************/
+
+  & .header-wrap
+    background-color: $grey
+    height: 70px
+    transition: all .7s ease
+
+.header
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  z-index: 5
+  
+  &-wrap
+    position: relative
+    height: 100px
+    
+    display: flex
+    justify-content: space-between
+    flex-wrap: nowrap
+    align-items: center
+    
+    transition: all .7s ease
+
+.logo
+  display: inline-block
+  position: relative
+  padding-left: 15px
+  padding-bottom: 8px
+  text-transform: uppercase
+  text-decoration: none
+  
+  &:hover
+    text-decoration: none
+  
+  &__left, &__right
+    font-size: em(68)
+    font-family: montserrat, sans-serif
+    font-weight: 300
+  
+  &__left
+    color: #fff
+  
+  &__right
+    position: relative
+    left: -5px
+    color: $accent
+
+
+
+
+/************** desktop menu **************/
+.nav
+  height: 50px
+  width: 100%
+  max-width: 650px
+  margin-right: 18px
+  padding: 0
+
+  .nav-list
+    margin: 0
+    padding: 0
+    list-style: none
+
+    display: flex
+    justify-content: space-between
+    flex-direction: row
+
+    &__item--active > .nav-list__link
+      color: #ffffff
+      background-color: $accent
+
+    &__link,
+    &__span
+      display: block
+      padding: 10px 20px
+      height: 50px
+      text-align: center
+      text-decoration: none
+      text-transform: uppercase
+      font-size: em(18)
+      font-family: montserrat, sans-serif
+      font-weight: 300
+      cursor: pointer
+      color: #fff
+      transition: all .5s ease-in
+
+      &:hover
+        text-decoration: none
+        color: #ffffff
+        background: $accent
+
+    &__inside
+      position: absolute
+      visibility: hidden
+      padding: 20px 0
+      z-index: 4
+      opacity: 0
+      transform: translateY(30px)
+      transition: all .3s ease-in
+      transition-delay: .5s
+
+      &-list
+        height: 30px
+        width: 200px
+        list-style: none
+        vertical-align: middle
+        background-color: $darkGrey
+
+        &:first-child
+          height: 42px
+          & .nav-list__inside-link
+            padding-top: 22px
+
+        &:last-child
+          height: 62px
+
+      &-link
+        padding-left: 17px
+        text-align: left
+        font-weight: 400
+        vertical-align: middle
+        transition: color .5s ease
+
+        &:hover
+          color: $accent
+          background-color: $darkGrey
+          text-decoration: none
+          transition: color .5s ease
+
+    &__item:hover .nav-list__inside
+      position: absolute
+      visibility: visible
+      opacity: 1
+      transform: translateY(0)
+      transition-delay: .25s
+
+/************** mobile panel **************/
+.mobile-nav
+  display: none
+  position: fixed
+  top: 0
+  left: 0
+  height: 56px
+  width: 100%
+  background-color: #fdfdfd
+  z-index: 4
+  
+.mobile-logo
+  display: inline-block
+  position: relative
+  padding-left: 5px
+  font-size: em(31)
+  font-family: montserrat, sans-serif
+  font-weight: 300
+  text-transform: uppercase
+  
+  &__left
+    padding: 0
+    margin: 0
+    color: $lightGrey
+  
+  &__right
+    position: relative
+    left: -8px
+    margin: 0
+    color: $accent
+    
+.hamburger
+  &-box, &-inner, &-inner::before, &-inner::after
+    width: 25px
+  
+  &-inner::before
+    top: -9px
+  &--collapse &-inner::after
+    top: -18px
+  
+  &-inner, &-inner::after, &-inner::before
+    height: 3px
+    background-color: $darkGrey /*цвет полосок*/
+    
+#mobile-menu
+  margin-top: 56px //отступ от верха экрана до мменю
+  display: none
+
+/************** mmenu my style **************/
+.mm-menu.mm-theme-white .mm-listview>li a:not(.mm-next),
+.mm-menu.mm-theme-white .mm-listview>li span:not(.mm-next)
+  font-weight: 300 !important
+  font-size: em(20)
+  padding-top: 13px
+  padding-bottom: 13px
+  
+html.mm-blocking body
+  overflow: auto //прокрутка страницы не пропадает при появлении меню
+
+.mm-listview .mm-next:before
+  border: none //убираем полоски возле стрелок подменю
+
+#mm-0 > ul > .nav-logo
+  display: none //убираем лого из мменю
+
+.mm-next:after
+  transform: rotate(225deg)
+
+.mm-opened > .mm-next:after,
+.mm-vertical .mm-listview > li.mm-opened > .mm-next:after
+  transform: rotate(45deg)
+  border-color: #fff
+  right: 23px
+
+.mm-menu.mm-theme-white .mm-listview
+  & > li:hover,
+  & > .mm-opened,
+  & > .mm-selected,
+  & > .nav-list__item--active
+    background-color: $accent
+    color: #ffffff
+    transition: all .5s ease
+
+  & > li:hover .mm-next:after,
+  & > .mm-selected .mm-next:after
+    border-color: #ffffff
+  
+  & > li a:not(.mm-next),
+  & > li span:not(.mm-next)
+    font-weight: 700
+
+  & li.mm-opened.mm-vertical>.mm-panel
+    background-color: #ffffff
+    color: $darkGrey
+    padding: 0
+
+.mm-prev:before, .mm-next:after, .mm-arrow:after
+  border-color: #fff
+
+.mm-listview>li.mm-vertical>.mm-next, .mm-vertical .mm-listview>li>.mm-next
+  height: 46px
+  
+/************** home slider **************/
+.carousel
+  position: relative
+  background-color: $grey
+  
+  .carousel-wrap
+    display: block
+    margin: auto
+    
+    .carousel-wrap__slide
+.carousel-content
+  position: relative
+  height: 100vh
+  width: auto
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  
+.owl-dots
+  /* Магия убирает белую полоску после overflow hidden*/
+  position: absolute
+  /* ---  */
+  bottom: 5%
+  width: 100%
+  text-align: center
+  
+  .owl-dot
+    display: inline-block
+    width: 100px
+    height: 10px
+    margin-right: 12px
+    background-color: #ffffff
+    cursor: pointer
+    transition: background-color .25s ease
+
+    /***************** triangle dots start ********************/
+    &:first-child
+      //transform: rotate(20deg) translateX(-50%) translateY(-210%)
+      transform: rotate(20deg) translateX(-50%) translateY(-230%)
+      
+    &:last-child
+      //transform: rotate(-20deg) translateX(50%) translateY(-210%)
+      transform: rotate(-20deg) translateX(50%) translateY(-230%)
+      
+    &:nth-child(2)
+      position: relative
+      background-color: transparent
+      
+      &:before, &:after
+        position: absolute
+        top: 0
+        content: ""
+        display: inline-block
+        width: 94px
+        height: 10px
+        background-color: #ffffff
+        transition: .33s all ease
+      &:before
+        right: 44%
+        transform: rotate(20deg)
+  
+      &:after
+        left: 44%
+        transform: rotate(-20deg)
+        
+    &.active:nth-child(2)
+      background-color: transparent
+  
+    &.active:nth-child(2):before,
+    &.active:nth-child(2):after
+      background-color: $accent
+    /***************** triangle dots finish ********************/
+
+    &.active
+      background-color: $accent
+  
+  .owl-dot:nth-last-child(1)
+    margin-right: 0
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "media" // Всегда в конце
