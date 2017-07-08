@@ -18,7 +18,7 @@ var validator       = require('../node_modules/gulp-html'),
     responsive      = require('../node_modules/gulp-responsive'); //нарезка картинок
 
 
-gulp.task('valid-html', function() {
+gulp.task('valid-html', function() { //bem-validate app/index.html
     return gulp.src('dev/*.html')
         .pipe(validator())
         .on('error', function () {
@@ -45,37 +45,6 @@ gulp.task('webserver', function () { //временный сервер для п
     });
 });
 
-gulp.task('miniature-img', function () { //создлает миниатюры изображений
-    return gulp.src(['app/img/slider-top/**/*.{gif,jpg,jpeg,png}'])
-        .pipe(responsive({ '**/*': [{//Изменить размер всех изображений
-            width: 1600,
-            rename: { suffix: '-1600' }
-        }, {
-            width: 1280,
-            rename: { suffix: '-1280' }
-        }, {
-            width: 960,
-            rename: { suffix: '-960' }
-        }, {
-            width: 640,
-            rename: { suffix: '-640' }
-        }],
-        }, {
-            // Глобальная настройка для всех изображений
-            quality: 70, // Качество для JPEG, webp и выходной форматы TIFF
-            progressive: true, //Использование Прогрессивная (чересстрочная развертка) сканирования для форматов JPEG и PNG выпуск
-            compressionLevel: 6, // Уровень сжатия zlib выходного формате PNG
-            withMetadata: false, // полосы всех метаданных
-            skipOnEnlargement: true,
-            errorOnUnusedConfig: false,
-            errorOnUnusedImage: false,
-            errorOnEnlargement: false
-        }))
-        .pipe(gulp.dest('app/img/slider-top/min')); //куда сохраняем миниатюры
-});
-
-
-
 
 
 gulp.task('common-js', function() {
@@ -92,7 +61,7 @@ gulp.task('js', ['common-js'], function() {
         'app/libs/jquery/dist/jquery.min.js',
         'app/libs/jQuery.mmenu/dist/jquery.mmenu.all.js', //мобильное меню
         'app/libs/owl.carousel/dist/owl.carousel.js', //карусель
-        'app/js/common.min.js', // Всегда в конце
+        'app/js/common.min.js' // Всегда в конце
     ])
         .pipe(concat('scripts.min.js'))
         .pipe(gulp.dest('app/js'))

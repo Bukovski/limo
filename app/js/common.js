@@ -52,7 +52,8 @@ $(function() {
     });
     
     //карусель верхняя
-    $(".carousel-wrap").owlCarousel({
+    var owl = $(".carousel-wrap");
+    owl.owlCarousel({
         loop: true,
         items: 1,
         smartSpeed: 700,
@@ -63,5 +64,31 @@ $(function() {
         autoplayTimeout: 5000,
         dots: true
     });
+    //анимация блоков внутри карусели https://codepen.io/motif/pen/qreRym
+    //анимацию качаем тут https://daneden.github.io/animate.css/
+    function setAnimation ( _elem, _InOut ) {
+        var animationEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        _elem.each ( function () {
+            var $elem = $(this);
+            var $animationType = 'animated ' + $elem.data( 'animation-' + _InOut );
+            $elem.addClass($animationType).one(animationEndEvent, function () {
+                $elem.removeClass($animationType); // remove animate.css Class at the end of the animations
+            });
+        });
+    }
+    owl.on('change.owl.carousel', function(event) {
+        var $currentItem = $('.owl-item', owl).eq(event.item.index);
+        var $elemsToanim = $currentItem.find("[data-animation-out]");
+        setAnimation ($elemsToanim, 'out');
+    });
+    owl.on('changed.owl.carousel', function(event) {
+        var $currentItem = $('.owl-item', owl).eq(event.item.index);
+        var $elemsToanim = $currentItem.find("[data-animation-in]");
+        setAnimation ($elemsToanim, 'in');
+    });
+    
+    
+    
+
 
 });
