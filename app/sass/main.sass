@@ -37,14 +37,14 @@ body
 	overflow-x: hidden
 	opacity: 1
 
-.img-responsive
-	display: block
-	max-width: 100%
-	height: auto
 
-
+/***** button info no border ****/
 .btn-info
   display: block
+  margin: 0 auto
+  width: 100%
+  max-width: 150px
+  cursor: pointer
   font-family: montserrat, sans-serif
   font-size: em(24)
   font-weight: 300
@@ -53,13 +53,102 @@ body
   transition: all .3s ease-in
   color: #ffffff
   background-color: transparent
+  z-index: 1
   
   &:hover
     text-decoration: none
-    color: $accent
+    color: $accent !important
     
-    
+/***** arrow down ****/
+.btn-down
+  position: relative
+  padding-top: 10%
+  padding-bottom: 5%
+  width: 100%
+  text-align: center
   
+  &__btn svg
+    position: relative
+    display: inline-block
+    margin: 0 auto
+    width: 60px
+    height: 60px
+    cursor: pointer
+    fill: #cac9ca
+    transition: all .3s ease-in
+    z-index: 2
+    
+    &:hover path
+      fill: $accent
+    
+    &:hover
+      animation-duration: 1s
+      @extend .fadeInDown
+    
+/***** vertical line ****/
+.vertical-line
+  position: relative
+  display: inline-block
+  height: 53px
+  left: 0
+  top: 0
+  border-left: 1px solid $lightGrey
+  
+/***** horizontal line ****/
+.horizontal-line
+  position: relative
+  display: block
+  margin: 0 auto
+  margin-bottom: 25px
+  width: 100%
+  max-width: 300px
+  bottom: 100%
+  border-top: 1px solid $lightGrey
+  
+/***** background image ****/
+.background-image
+  position: relative
+  width: auto
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  
+/***** content title ****/
+.content-title
+  margin: -15px auto
+  padding: 0
+  font-size: em(80)
+  font-weight: 400
+  
+/***** content text ****/
+.content-text
+  line-height: 1.2
+  font-size: em(30)
+  font-weight: 300
+  color: $lightGrey
+  
+/***** left half ****/
+.left-half
+  display: inline-block
+  position: absolute
+  height: 100%
+  bottom: 0
+  left: 0
+  right: 50%
+  transform: skewY(20deg)
+  transform-origin: 100%
+  
+/***** right half ****/
+.right-half
+  display: inline-block
+  position: absolute
+  height: 100%
+  bottom: 0
+  right: 0
+  left: 50%
+  transform: skewY(-20deg)
+  transform-origin: 0
+
 /****************** header *********************/
 /************** desktop panel **************/
 body.header-fixed header
@@ -323,12 +412,8 @@ html.mm-blocking body
     fill: #363c3f
   
   &-content
-    position: relative
+    @extend .background-image
     height: 100vh
-    width: auto
-    background-size: cover
-    background-position: center center
-    background-repeat: no-repeat
   
     display: flex
     flex-direction: column
@@ -458,36 +543,23 @@ html.mm-blocking body
 /***************** services ********************/
 .services
   position: relative
-  //background-color: $darkGrey
   
   &::before
     content: ''
-    display: inline-block
-    position: absolute
-    height: 100%
-    bottom: 0
-    left: 0
-    right: 50%
     background-color: $darkGrey
-    transform: skewY(20deg)
-    transform-origin: 100%
     z-index: 1
+    @extend .left-half
     
   &::after
     content: ''
-    display: inline-block
-    position: absolute
-    height: 100%
-    bottom: 0
-    right: 0
-    left: 50%
     background-color: $darkGrey
-    transform: skewY(-20deg)
-    transform-origin: 0
     z-index: 1
+    @extend .right-half
   
   &-content
     text-align: center
+    background-color: $darkGrey
+
     
     display: flex
     justify-content: space-between
@@ -503,65 +575,178 @@ html.mm-blocking body
   
     &::before
       content: ''
-      position: relative
-      display: inline-block
-      height: 53px
-      left: 0
-      top: 0
-      border-left: 1px solid $lightGrey
+      @extend .vertical-line
   
     &__title
-      margin: -15px auto
-      padding: 0
-      font-size: em(80)
+      @extend .content-title
       color: #ffffff
   
     &__text
-      line-height: 1.2
-      font-size: em(30)
-      font-weight: 300
-      color: $lightGrey
+      @extend .content-text
   
       &::before
         content: ''
-        position: relative
-        display: block
-        margin: 0 auto
-        margin-bottom: 25px
-        width: 100%
-        max-width: 300px
-        bottom: 100%
-        border-top: 1px solid $lightGrey
+        @extend .horizontal-line
       
-  &-down
-    position: relative
-    padding-top: 10%
-    padding-bottom: 5%
-    width: 100%
-    text-align: center
+/***************** welcome ********************/
+.welcome
+  @extend .background-image
+  
+  &::before
+    content: ''
+    background-color: #eeefef
+    z-index: -3
+    @extend .left-half
     
-    &__btn svg
-      position: relative
-      display: inline-block
-      margin: 0 auto
-      width: 60px
-      height: 60px
-      cursor: pointer
-      fill: #cac9ca
-      transition: all .3s ease-in
-      z-index: 2
+  &::after
+    content: ''
+    background-color: #eeefef
+    z-index: -3
+    @extend .right-half
+  
+  &-wrap
+    padding: 10% 0 7% 0
+    width: 50%
+  
+  &-content
+    @extend .services-column
+    margin-top: 0
+    
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+  
+    &__title
+      @extend .content-title
+      color: $darkGrey
+      z-index: 1
+    
+    &__text
+      @extend .content-text
+      text-align: center
+      z-index: 1
       
-      &:hover path
-        fill: $accent
+      &::before
+        content: ''
+        margin-bottom: 30px
+        @extend .horizontal-line
+  
+  .btn-info
+    color: $darkGrey
+
+/***************** denomination ********************/
+.denomination
+  @extend .background-image
+  
+  &::before
+    content: ''
+    background-color: #fff
+    z-index: -1
+    @extend .left-half
+  
+  &::after
+    content: ''
+    background-color: #fff
+    z-index: -1
+    @extend .right-half
+    
+  &-wrap
+    padding: 12% 0 7% 0
+  
+  &-content
+    @extend .services-column
+    width: 100%
+    max-width: 500px
+    margin: 0 15% 0 auto
+  
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+  
+    
+    &__title
+      @extend .content-title
+      color: $darkGrey
+      z-index: 1
+    
+      &::after
+        content: ''
+        @extend .horizontal-line
+  
+  &-list
+    width: 100%
+    margin-left: 10%
+    z-index: 1
+  
+    counter-reset: li 0
+    
+    & li::before
+      content: counter(li, decimal-leading-zero)
+      counter-increment: li
+      font-size: em(20)
+      font-weight: 300
+      color: $darkGrey
+  
+      order: 1
+      
+    &__item
+      position: relative
+      list-style: none
+  
+      display: flex
+      align-items: center
+      
+      &::after
+        content: ''
+        display: inline-block
+        margin: 0 15px
+        width: 25px
+        border-top: 1px solid $grey
         
+        order: 2
+      
+    &__link
+      cursor: pointer
+      font-size: em(30)
+      font-weight: 300
+      text-decoration: none
+      color: $accent
+      transition: color .3s ease-in
+  
+      order: 3
+  
       &:hover
-        animation-duration: 1s
-        @extend .fadeInDown
+        text-decoration: none
+        color: $darkGrey
+  
+  .btn-info
+    color: $darkGrey
+    
 
 
 
-
-
-
+/**************** button up ****************/
+#go-up
+  position: fixed
+  display: none
+  width: 50px
+  height: 50px
+  text-decoration: none
+  background-color: $accent
+  padding: 9px 15px
+  right: 3%
+  bottom: 5%
+  transition: background-color .3s ease-in
+  z-index: 100
+  
+  &:hover
+    background-color: darken($accent, 5)
+  
+.arrow-go-up
+  width: 20px
+  margin: 0 auto
+  padding: 0
 
 @import "media" // Всегда в конце

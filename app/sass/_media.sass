@@ -15,10 +15,7 @@
       border: 0
       outline: none
   
-      &:first-child
-        transform: none
-        
-      &:last-child
+      &:first-child, &:last-child
         transform: none
         
       &:nth-child(2)
@@ -33,16 +30,22 @@
   .services
     background-color: $darkGrey
     
-    &::before, &::after, &-down, &-column::before
-      //&-column__text::before
+    &::before, &::after, &-column::before
       display: none
       
-    &-column__title
-      font-size: em(50)
-  
-    .btn-info
-      margin-bottom: 50px
-      
+  .welcome::before, .welcome::after, .btn-down,
+  .denomination::before, .denomination::after
+    display: none
+    
+  .denomination-content
+    margin: 0 0 0 auto
+    
+  .content-title
+    font-size: em(50)
+    
+  .btn-info
+    margin-bottom: 50px
+
 
 
 /* Medium Devices, Desktops */
@@ -61,6 +64,17 @@
       
       &__btn
         font-size: em(20)
+        
+  .welcome, .denomination
+    &:before
+      content: ''
+      display: block
+      width: 100%
+      height: 100%
+      transform: skewY(0deg)
+      background: #eeefef
+      opacity: .7
+      z-index: 0
 
 
 /* Small Devices, Tablets */
@@ -77,7 +91,7 @@
       &__btn
         padding: 15px 30px
         
-  .services
+  .services, .welcome
     &-content
       justify-content: center
       
@@ -89,11 +103,30 @@
         font-size: em(20)
         margin: 0 20px 10px 20px
         
+        &::before
+          margin-top: 15px
+  
       &:last-child .btn-info
         margin-bottom: 30px
-    .btn-info
-      margin-bottom: 0
+        
+  .welcome-wrap
+    width: 100%
     
+  .denomination
+    &-content
+      margin: 0 auto
+    &-list
+      margin-left: 0
+      
+      &__link
+        font-size: em(20)
+  
+  
+  .btn-info
+    margin-bottom: 0
+    
+  .content-text
+    font-size: em(22)
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px)
@@ -113,31 +146,3 @@
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 320px)
 	/**/
-
-
-/*==========  Mobile First  ==========*/
-
-/* Custom, iPhone Retina */
-@media only screen and (min-width : 320px)
-	/**/
-
-
-/* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px)
-	/**/
-
-
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px)
-	/**/
-
-
-/* Medium Devices, Desktops */
-@media only screen and (min-width : 992px)
-	/**/
-
-
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px)
-	/**/
-

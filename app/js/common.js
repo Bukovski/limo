@@ -87,8 +87,31 @@ $(function() {
         setAnimation ($elemsToanim, 'in');
     });
     
+    //Parallax
+    //https://github.com/nk-o/jarallax
+    $('.welcome').jarallax({
+        speed: 0.8,
+        zIndex: -1
+    });
+    $('.denomination').jarallax({
+        speed: 0.8,
+        zIndex: -1,
+    });
     
     
-
-
+    
+    
+    //кнопка прокрутки вверх
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 100) {
+            $('#go-up').fadeIn();
+        } else {
+            $('#go-up').fadeOut();
+        }
+    });
+    $('#go-up').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+    
 });

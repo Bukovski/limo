@@ -1,0 +1,91 @@
+.jarallax {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+/* demo styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    color: #fff;
+    line-height: 1.5;
+}
+h1 {
+    font-size: 50px;
+}
+h2 {
+    font-size: 30px;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+small {
+    font-size: 75%;
+    color: #eee;
+}
+a, a:visited, a:hover, a:focus {
+    color: inherit;
+}
+a:hover, a:focus {
+    color: #ddd;
+}
+.jarallax {
+    height: 600px;
+}
+
+/* demo menu */
+.demo-menu {
+    background-color: #272333;
+}
+.demo-menu ul {
+    list-style-type: none;
+    text-align: center;
+    margin: 0;
+}
+.demo-menu ul li {
+    display: inline-block;
+}
+.demo-menu ul li a {
+    display: block;
+    padding: 20px 30px;
+    text-decoration: none;
+}
+.demo-menu ul li.active a,
+.demo-menu ul li a:hover {
+    background-color: #383344;
+}
+
+/* hero block */
+.demo-table {
+    display: table;
+    width: 100%;
+    height: 600px;
+    background-color: rgba(39,35,51,0.8);
+}
+.demo-table-cell {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* gap */
+.demo-gap {
+    padding: 50px;
+    background-color: #272333;
+    text-align: center;
+}
+
+/* full height demo */
+html.demo-full-height,
+html.demo-full-height body,
+html.demo-full-height .jarallax,
+html.demo-full-height .demo-table {
+    height: 100%;
+}
+html.demo-full-height .jarallax,
+html.demo-full-height .demo-table {
+    min-height: 600px;
+}

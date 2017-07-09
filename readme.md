@@ -4,4 +4,4 @@
 
 flexbox + jquery;
 SASS + NPM + Gulp + Bower;
-css-hamburgers + jQuery.mmenu + owl.carousel;
+css-hamburgers + jQuery.mmenu + owl.carousel + jarallax;
