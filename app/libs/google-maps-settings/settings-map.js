@@ -185,7 +185,7 @@ function initMap() {
     var marker = new google.maps.Marker({
         position:  {lat: 41.878330, lng: -87.626494},
         map: map,
-        icon: new google.maps.MarkerImage('../img/map/location-pointer.svg',
+        icon: new google.maps.MarkerImage('./img/map/location-pointer.svg',
             null, null, null, new google.maps.Size(70,70)), //размер  SVG
         draggable: false
     });

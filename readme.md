@@ -2,6 +2,6 @@
 	<img src="app/img/limo-preview.png" alt="Limo template">
 </p>
 
-flexbox + jquery;
+normalize + flexbox + jquery;
 SASS + NPM + Gulp + Bower;
-css-hamburgers + jQuery.mmenu + owl.carousel + jarallax;
+css-hamburgers + jQuery.mmenu + owl.carousel + jarallax + scrollto + google-map;

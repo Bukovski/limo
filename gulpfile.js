@@ -59,7 +59,6 @@ gulp.task('common-js', function() {
 gulp.task('js', ['common-js'], function() {
     return gulp.src([
         'app/libs/jquery/dist/jquery.min.js',
-        'app/libs/velocity/velocity.js', //preloader
         'app/libs/jQuery.mmenu/dist/jquery.mmenu.all.js', //mobile-menu
         'app/libs/owl.carousel/dist/owl.carousel.js', //carousel
         'app/libs/Parallax-jarallax/jarallax/jarallax.js', //parallax

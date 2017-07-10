@@ -1,7 +1,6 @@
 @import "fonts"
 @import "libs"
 @import "vars"
-@import "_preload"
 
 *::-webkit-input-placeholder
 	color: #666
@@ -28,9 +27,6 @@ body textarea:focus:required:invalid
 body input:required:valid,
 body textarea:required:valid
 	color: #666
-
-//html, body
-//  height: 100% //заставляет mmenu при открытии делать скрол в начало страницы
 
 body
 	font-size: 16px
@@ -317,7 +313,7 @@ body.header-fixed header
   height: 56px
   width: 100%
   background-color: #fdfdfd
-  z-index: 4
+  z-index: 100
   
 .mobile-logo
   display: inline-block
@@ -355,6 +351,7 @@ body.header-fixed header
 #mobile-menu
   margin-top: 56px //отступ от верха экрана до мменю
   display: none
+  z-index: 10
 
 /************** mmenu my style **************/
 .mm-menu.mm-theme-white .mm-listview>li a:not(.mm-next),
