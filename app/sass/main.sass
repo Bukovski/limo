@@ -1,6 +1,7 @@
 @import "fonts"
 @import "libs"
 @import "vars"
+@import "_preload"
 
 *::-webkit-input-placeholder
 	color: #666
@@ -36,7 +37,12 @@ body
 	font-family: $default-font
 	overflow-x: hidden
 	opacity: 1
+ 
 
+
+
+//header, section, .footer-map__container
+//  display: none
 
 /***** button info no border ****/
 .btn-info
@@ -137,7 +143,7 @@ body
   right: 50%
   transform: skewY(20deg)
   transform-origin: 100%
-  
+
 /***** right half ****/
 .right-half
   display: inline-block
@@ -724,7 +730,146 @@ html.mm-blocking body
   .btn-info
     color: $darkGrey
     
+/***************** quality ********************/
+.quality
+  @extend .background-image
+  
+  &::before
+    @extend .welcome::before
+    @extend .left-half
+  
+  &::after
+    @extend .welcome::after
+    @extend .right-half
+  
+  &-wrap
+    @extend .welcome-wrap
+  
+  &-content
+    @extend .welcome-content
+    @extend .services-column
+    
+    &__title
+      @extend .content-title
+      @extend .welcome-content__title
+    
+    &__text
+      @extend .content-text
+      @extend .welcome-content__text
+      
+      &::before
+        @extend .horizontal-line
+        @extend .welcome-content__text::before
+  
+  .btn-info
+    color: $darkGrey
+    
+/**************** contacts ****************/
+.contacts
+  @extend .background-image
+  
+  &::before
+    @extend .left-half
+    @extend .denomination::before
+    z-index: 1
+  
+  &::after
+    @extend .right-half
+    @extend .denomination::after
+    z-index: 1
+  
+  &-wrap
+    @extend .denomination-wrap
+    z-index: 2
+    height: 1055px
 
+    
+  &-content
+    @extend .denomination-content
+    @extend .services-column
+    background-color: #fff
+    z-index: 2
+    
+    &::before
+      z-index: 2
+    
+    &__title
+      @extend .denomination-content__title
+      @extend .content-title
+      z-index: 2
+  
+    &__copyright
+      margin-top: 135px
+      font-size: em(20)
+      font-weight: 300
+      color: $lightGrey
+      z-index: 2
+  
+  &-info
+    z-index: 2
+    
+  &-address
+    width: 100%
+    max-width: 280px
+    text-align: center
+    z-index: 2
+   
+    &__direction
+      font-size: em(30)
+      font-style: normal
+      font-weight: 300
+      color: $lightGrey
+      z-index: 2
+  
+    &__phone
+      font-size: em(30)
+      font-style: normal
+      font-weight: 300
+      text-decoration: none
+      color: $lightGrey
+      transition: color .3s ease-in
+      z-index: 2
+      
+      &:hover
+        text-decoration: none
+        color: $accent
+        
+  &-image
+    position: absolute
+    height: 100%
+    bottom: 0
+    left: 0
+    right: 50%
+    transform-origin: 100%
+    transform: skewY(20deg)
+    overflow: hidden
+    z-index: 1
+  
+    
+    &__content
+      display: block
+      height: auto
+      width: 100%
+      vertical-align: middle
+      transform: skewY(-20deg)
+      z-index: 1
+      
+  .btn-info
+    margin-top: 60px
+    color: $darkGrey
+
+/**************** map ****************/
+.footer-map
+  display: block
+  margin-top: -42.5vh
+  margin-bottom: 0
+  
+  &__container
+    width: 100%
+    height: 100vh
+    background-color: $grey
+    z-index: 0
+  
 
 
 /**************** button up ****************/
@@ -748,5 +893,9 @@ html.mm-blocking body
   width: 20px
   margin: 0 auto
   padding: 0
+  
+  
+body
+  background-color: $darkGrey
 
 @import "media" // Всегда в конце

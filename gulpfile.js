@@ -59,10 +59,13 @@ gulp.task('common-js', function() {
 gulp.task('js', ['common-js'], function() {
     return gulp.src([
         'app/libs/jquery/dist/jquery.min.js',
-        'app/libs/jQuery.mmenu/dist/jquery.mmenu.all.js', //мобильное меню
-        'app/libs/owl.carousel/dist/owl.carousel.js', //карусель
-        'app/libs/Parallax-jarallax/jarallax/jarallax.js', //карусель
-        'app/js/common.min.js' // Всегда в конце
+        'app/libs/velocity/velocity.js', //preloader
+        'app/libs/jQuery.mmenu/dist/jquery.mmenu.all.js', //mobile-menu
+        'app/libs/owl.carousel/dist/owl.carousel.js', //carousel
+        'app/libs/Parallax-jarallax/jarallax/jarallax.js', //parallax
+        'app/libs/Scrollto/scrollto.js', //scroll-to-section
+        'app/libs/google-maps-settings/settings-map.js', //google-map
+        'app/js/common.min.js' // olways button
     ])
         .pipe(concat('scripts.min.js'))
         .pipe(gulp.dest('app/js'))

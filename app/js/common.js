@@ -1,5 +1,28 @@
 $(function() {
     
+    //preloader
+    //https://github.com/julianshapiro/velocity
+    //https://codepen.io/fluxus/pen/pjEOyy
+    setTimeout(function(){
+        $('#preloader').velocity({
+            opacity : 0.1,
+            translateY: "-80px"
+        }, {
+            duration: 400,
+            complete: function(){
+                $('#hola').velocity({
+                    translateY : "-100%"
+                }, {
+                    duration: 1000,
+                    easing: [0.7,0,0.3,1],
+                    complete: function(){
+                        $('.header').addClass('animate-border divide');
+                    }
+                })
+            }
+        })
+    },1000);
+    
     $(".nav-list").clone().appendTo("#mobile-menu"); //клонируем меню с шапки в мобильное меню
     $("#mobile-menu").find("*").attr("style", ""); //очищаем от встроеных стилей
     $("#mobile-menu").find("ul").removeClass("nav-list"); //очищаем от встроеных стилей
@@ -89,15 +112,19 @@ $(function() {
     
     //Parallax
     //https://github.com/nk-o/jarallax
-    $('.welcome').jarallax({
+    $('.welcome, .denomination, .quality').jarallax({
         speed: 0.8,
         zIndex: -1
     });
-    $('.denomination').jarallax({
-        speed: 0.8,
-        zIndex: -1,
-    });
     
+    //ScrollTo
+    //https://github.com/mpacek/Scrollto
+    if ($.fn.scrolltoSetup) {
+        $('.btn-down__btn').scrolltoSetup({
+            animationSpeed: 1500,
+            additionalHeight: 100
+        });
+    }
     
     
     

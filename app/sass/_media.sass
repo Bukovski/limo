@@ -45,8 +45,22 @@
     
   .btn-info
     margin-bottom: 50px
+    
+  .contacts
+    &-wrap
+      height: 100%
+      background-color: #fff
+    &-address__direction
+      line-height: 35px
+    &-image
+      transform: skewY(0deg)
+      &__content
+        transform: skewY(0deg)
+      
 
-
+  .footer-map
+    margin-top: 0
+    
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px)
@@ -65,7 +79,7 @@
       &__btn
         font-size: em(20)
         
-  .welcome, .denomination
+  .welcome, .denomination, .quality
     &:before
       content: ''
       display: block
@@ -75,7 +89,13 @@
       background: #eeefef
       opacity: .7
       z-index: 0
-
+      
+  .contacts
+    &-image
+      opacity: .4
+  
+    &-content__copyright
+      margin-top: 20px
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px)
@@ -127,6 +147,21 @@
     
   .content-text
     font-size: em(22)
+    
+  .contacts
+    .btn-info
+      margin-top: 15px
+    &-wrap
+    &-address__direction
+      font-size: em(22)
+    &-image
+      &__content
+    
+    &-content__copyright
+      margin-top: 0
+      
+  .footer-map__container
+      height: 50vh
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px)
